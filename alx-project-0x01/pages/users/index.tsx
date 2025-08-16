@@ -13,7 +13,7 @@ const Users: React.FC<UsersPageProps> = ({ posts }) => (
     <main className="flex-grow p-8">
       <h1 className="text-3xl font-bold mb-4">Users Page</h1>
       <div className="grid grid-cols-3 gap-2">
-        {posts?.map((user: UserProps, key: number) => (
+        {posts.map((user: UserProps, key: number) => (
           <UserCard key={key} {...user} />
         ))}
       </div>
