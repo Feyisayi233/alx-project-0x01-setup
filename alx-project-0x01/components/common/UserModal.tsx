@@ -1,4 +1,4 @@
-import { UserData, UserModalProps } from "@/interfaces";
+import { UserData, UserModalProps, UserProps } from "@/interfaces";
 import React, { useState } from "react";
 
 const UserModal: React.FC<UserModalProps> = ({ onClose, onSubmit }) => {
@@ -55,7 +55,12 @@ const UserModal: React.FC<UserModalProps> = ({ onClose, onSubmit }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(user);
+    // Ensure id is a number for UserProps
+    const userProps: UserProps = {
+      ...user,
+      id: user.id ?? 1, // fallback to 1 if undefined
+    };
+    onSubmit(userProps);
     onClose();
   };
 
